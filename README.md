@@ -10,7 +10,6 @@ This script automates the setup of ASA Cluster for Pterodactyl by:
 - A running Pterodactyl wings instance.
 
 ## Usage
-1. Clone the repository:
+1. Clone and run the script in a single command:
    ```bash
-   git clone https://github.com/GameServersHub-LLC/asa-mount-script.git
-   cd asa-cluster-setup
+   git clone https://github.com/yourusername/asa-cluster-setup.git && cd asa-cluster-setup && bash enable_asa_cluster.sh
