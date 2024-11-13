@@ -2,8 +2,8 @@
 
 # Pterodactyl ASA Cluster Setup Script
 # This script automates the process of enabling mounting for Pterodactyl ASA Cluster.
-# Author: Your Name
-# Date: YYYY-MM-DD
+# Author: Mike H
+# Date: 2024-11-13
 
 # Exit on error
 set -e
