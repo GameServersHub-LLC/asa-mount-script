@@ -11,7 +11,7 @@ set -e
 # Variables
 CLUSTER_DIR="/etc/pterodactyl/asa_cluster"
 WINGS_CONFIG="/etc/pterodactyl/config.yml"
-MOUNT_ENTRY="- /etc/pterodactyl/asa_cluster"
+MOUNT_ENTRY="  - /etc/pterodactyl/asa_cluster"
 
 # Functions
 create_cluster_directory() {
