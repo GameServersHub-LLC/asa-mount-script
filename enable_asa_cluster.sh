@@ -24,7 +24,7 @@ create_cluster_directory() {
 edit_wings_config() {
     echo "Editing wings configuration file..."
     if grep -q "allowed_mounts: \[\]" "$WINGS_CONFIG"; then
-        sudo sed -i "/allowed_mounts: \[\]/c\allowed_mounts:\n   ${$MOUNT_ENTRY}" "$WINGS_CONFIG"
+        sudo sed -i "/allowed_mounts: \[\]/c\allowed_mounts:\n   $MOUNT_ENTRY" "$WINGS_CONFIG"
         echo "Configuration updated to allow mounting for $CLUSTER_DIR."
     elif ! grep -q "$MOUNT_ENTRY" "$WINGS_CONFIG"; then
         echo "$MOUNT_ENTRY" | sudo tee -a "$WINGS_CONFIG" > /dev/null
