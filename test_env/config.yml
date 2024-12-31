@@ -1,0 +1,5 @@
+system:
+  root_directory: /var/lib/pterodactyl
+allowed_mounts:
+  - ./asa_cluster
+remote: tcp://0.0.0.0:8080
