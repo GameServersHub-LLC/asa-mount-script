@@ -11,7 +11,7 @@ set -e
 # Variables
 CLUSTER_DIR="/etc/pterodactyl/asa_cluster"
 WINGS_CONFIG="/etc/pterodactyl/config.yml"
-MOUNT_ENTRY="  - /etc/pterodactyl/asa_cluster"
+MOUNT_ENTRY="    - /etc/pterodactyl/asa_cluster"  # Updated with proper indentation
 
 # Functions
 create_cluster_directory() {
@@ -24,10 +24,12 @@ create_cluster_directory() {
 edit_wings_config() {
     echo "Editing wings configuration file..."
     if grep -q "allowed_mounts: \[\]" "$WINGS_CONFIG"; then
-        sudo sed -i "/allowed_mounts: \[\]/c\allowed_mounts:\n   $MOUNT_ENTRY" "$WINGS_CONFIG"
+        # Replace empty array with properly formatted mount entry
+        sudo sed -i "/allowed_mounts: \[\]/c\allowed_mounts:\n$MOUNT_ENTRY" "$WINGS_CONFIG"
         echo "Configuration updated to allow mounting for $CLUSTER_DIR."
-    elif ! grep -q "$MOUNT_ENTRY" "$WINGS_CONFIG"; then
-        echo "$MOUNT_ENTRY" | sudo tee -a "$WINGS_CONFIG" > /dev/null
+    elif ! grep -q "$(echo "$MOUNT_ENTRY" | sed 's/[][\.*^$/]/\\&/g')" "$WINGS_CONFIG"; then
+        # Find the allowed_mounts line and append the new mount entry
+        sudo sed -i '/allowed_mounts:/a\'"$MOUNT_ENTRY" "$WINGS_CONFIG"
         echo "Mount entry added to configuration."
     else
         echo "Mount entry already exists in configuration."
