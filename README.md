@@ -23,5 +23,5 @@ Run this single command:
 
 Using curl:
 ```bash
-curl -sSL https://raw.githubusercontent.com/GameServersHub-LLC/asa-mount-script/main/asa-mount-script/enable_asa_cluster.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/gameservershub-llc/asa-mount-script/master/enable_asa_cluster.sh | sudo bash
 ```

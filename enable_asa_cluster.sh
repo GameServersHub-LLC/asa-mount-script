@@ -1,8 +1,17 @@
 #!/bin/bash
 
+# Verify script is running
+echo "ASA Cluster Setup Script Starting..."
+
 # Ensure we're running with root privileges
 if [ "$EUID" -ne 0 ]; then 
     echo "Please run as root or with sudo"
+    exit 1
+fi
+
+# Verify wings installation
+if [ ! -f "/etc/pterodactyl/config.yml" ]; then
+    echo "Error: Pterodactyl wings configuration not found!"
     exit 1
 fi
 
