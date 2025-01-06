@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Ensure we're running with root privileges
+if [ "$EUID" -ne 0 ]; then 
+    echo "Please run as root or with sudo"
+    exit 1
+fi
+
 # Pterodactyl ASA Cluster Setup Script
 # This script automates the process of enabling mounting for Pterodactyl ASA Cluster.
 # Author: Mike H
